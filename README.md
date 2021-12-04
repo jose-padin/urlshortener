@@ -1,1 +1,6 @@
-# [URL Shortener Microservice](https://www.freecodecamp.org/learn/back-end-development-and-apis/back-end-development-and-apis-projects/url-shortener-microservice)
+# URL shortener
+
+### This is a little project made for FreeCodeCamp, in the `Back end development and APIs` module
+
+- Relevant items used in this project:
+[NODE, NPM, Express, Nodemon, mongodb, mongoose, .env files]
