@@ -27,14 +27,14 @@ app.get('/', (req, res) => {
 });
 
 
-app.post('/api/shorturl', (req, res) => {
+app.post('/api/shorturl', async (req, res) => {
   const original_url = req.body.url;
 
   if (!validUrl.isUri(original_url)) {
     return res.json({error: 'invalid url'})
   }
 
-  ShortUrl.findOne({original_url: original_url}, (err, url) => {
+  await ShortUrl.findOne({original_url: original_url}, (err, url) => {
     if (url) {
       responseObject['original_url'] = url.original_url;
       responseObject['short_url'] = url.short_url;
