@@ -28,11 +28,16 @@ app.get('/', (req, res) => {
 
 app.post('/api/shorturl', (req, res) => {
   const original_url = req.body.url;
+  const regex = new RegExp(/^(ftp|http|https):\/\/[^ "]+$/);
   let input_short = 1;
 
-  if (!validUrl.isUri(original_url)) {
+
+  if (!regex.test(original_url)) {
     return res.json({error: 'invalid url'})
   }
+  // if (!validUrl.isUri(original_url)) {
+  //   return res.json({error: 'invalid url'})
+  // }
 
   ShortUrl.findOne({})
     .sort({short_url: 'desc'})
