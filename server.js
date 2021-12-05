@@ -34,14 +34,14 @@ app.post('/api/shorturl', (req, res) => {
     return res.json({error: 'invalid url'})
   }
 
-  const my_url = ShortUrl.findOne({original_url: original_url}, (err, url) => {
+  ShortUrl.findOne({original_url: original_url}, (err, url) => {
     if (url) {
       responseObject['original_url'] = url.original_url;
       responseObject['short_url'] = urlencode(url.short_url);
       return res.json(responseObject);
     }
 
-    ShortUrl.create({
+    const my_url = ShortUrl.create({
       original_url: original_url
     }).then((my_url) => {
       responseObject['original_url'] = my_url.original_url;
