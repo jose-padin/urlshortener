@@ -37,7 +37,7 @@ app.post('/api/shorturl', (req, res) => {
   ShortUrl.findOne({original_url: original_url}, (err, url) => {
     if (url) {
       responseObject['original_url'] = url.original_url;
-      responseObject['short_url'] = urlencode(url.short_url);
+      responseObject['short_url'] = url.short_url;
       return res.json(responseObject);
     }
 
